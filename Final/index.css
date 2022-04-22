@@ -1,0 +1,61 @@
+body {
+  font-family: roboto, sans-serif;
+  color: #707070;
+}
+h1 {
+  font-size: 40px;
+  margin: 20px 0;
+}
+h7 {
+  font-size: 40px;
+  margin: 20px 0;
+  color: rgb(14, 173, 54);
+}
+h2, h4 {
+  font-size: 30px;
+  margin-bottom: 30px;
+  color: #000;
+}
+h6 {
+  font-size: 30px;
+  margin-bottom: 30px;
+  color: rgb(173, 14, 14);
+}
+.container {
+  max-width: 1200px;
+  padding: 60px 0;
+  margin: auto;
+  clear: both;
+}
+
+.beshi {
+  max-width: 1140px;
+  padding: 60px 0;
+  margin: auto;
+  clear: both;
+}
+
+.majhari {
+  max-width: 1100px;
+  padding: 60px 0;
+  margin: auto;
+  clear: both;
+}
+.choto {
+  max-width: 400px;
+  padding: 60px 0;
+  margin: auto;
+  clear: both;
+}
+.half-width {
+  max-width: 50%;
+  float: left;
+}
+.service-item {
+  max-width: 25%;
+  float: left;
+  margin: 0px 15px 20px 15px;
+  padding: 20px;
+  border: 1px solid #ddd;
+  border-radius: 20px;
+}
