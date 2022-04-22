@@ -1,4 +1,11 @@
 body {
+  .main img {
+    width: 250px;
+}
+
+.main p {
+    background-color: darkorange;
+}
   font-family: roboto, sans-serif;
   color: #707070;
 }

@@ -1,59 +1,58 @@
-//console.log("more js practice"); 
-//console.log("this is the second line");
+fetch('https://www.themealdb.com/api/json/v1/1/search.php?f=a')
+.then(res=>res.json())
+.then(data=> displayFoods(data))
 
-function add(){
-    var num1 = document.getElementById("n1").value ;
-    var number1 = parseInt(num1);
-    var num2 = document.getElementById("n2").value ; 
-    var number2 = parseInt(num2);
-    
-    var result = number1 + number2 ;
-    
-    console.log(result);
-    var msg = "the sum of two numbers are:" + result;
-    document.getElementById("result-area").innerText= msg ; 
+const displayFoods = foods =>{
+const foodsDiv = document.createElement('food-items');
 
-}
-function changeText (){
-    var name = document.getElementById('name-input').value ;
-    var age = document.getElementById('age-input').value ;
+foods.forEach(meals=>{
+    const foodDiv = document.createElement('div');
 
-    document.getElementById('para-1').innerText = name;
-    document.getElementById('para-2').innerText= age;
+    foodDiv.className = 'meals';
+    const foodInfo = `
+    <h3>${meals.strMeal}</h3>
 
-    greet(name, age);
-}
-
-function greet (name, age ){
-  //var msg = "Welcome to our offline classes " + name  ; 
-  //document.getElementById('para-3').innerText = msg; 
-
-  document.getElementById('para-3').innerHTML = `<b>Nice to know you, ${name} <br>  
-                                                 you entered age:<u> ${age} </u> </b>`; 
-}
-
-function multiply (){
-    var num1 = 10;
-    var num2 = 15;
-    var Mresult = num1*num2;
-    console.log(Mresult);
-
-    
-    var msg = "the sum of two numbers are:" + Mresult;
-    document.getElementById("Mresult-area").innerText= msg ;
-
+    `;
+    foodDiv.innerHTML = foodInfo;
+    foodsDiv.appendChild(foodDiv);
+});
 }
 
 
-
-
-function add2 (){
-    var x = 20;
-    var y = 40;
-    var Sresult = x+y;
-    console.log(Sresult);
-
-    var msg = "the sum of two numbers are:" + Sresult;
-    document.getElementById("Sresult-area").innerText= msg ;
+var text = '';
+function findMeal (){
+    text = document.getElementById('meal-search').value;
+    connectMeal(text)
 }
 
+
+function connectMeal (text) {
+    fetch(`https://www.themealdb.com/api/json/v1/1/search.php?s=${text}`)
+    .then(res=> res.json() )
+    .then(data=> loadMeal(data));
+
+}
+
+connectMeal();
+
+function loadMeal (data){
+
+  console.table(data.meals[0]);
+
+  var container = document.getElementById('main-container');
+
+     var imgLink = data.meals[0].strMealThumb;
+     var cat = data.meals[0].strCategory;
+     var title = data.meals[0].strMeal;
+
+    // var newDiv = document.createElement("div");
+
+     container.innerHTML = `<p><b> ${title} </b></p>
+                         <img src="${imgLink}" <br/>
+                         <p> Category: ${cat} </p>`;
+
+   
+
+    container.appendChild(newDiv);
+
+}
